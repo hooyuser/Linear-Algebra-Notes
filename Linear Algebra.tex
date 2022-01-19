@@ -41,21 +41,21 @@
 \newcommand\scalemath[2]{\scalebox{#1}{\mbox{\ensuremath{\displaystyle #2}}}}
 % Start the document
 \begin{document}
-	  
+
 
 ~\\
-\begin{center}	
-	~\\ 
-	\vspace{6em} 
-	\textsc{\Huge Linear Algebra}	
+\begin{center}
 	~\\
-	\vspace{2.5em} 
+	\vspace{6em}
+	\textsc{\Huge Linear Algebra}
+	~\\
+	\vspace{2.5em}
 	{\Large }
 	~\\
 	\vspace{6em}
 	\textsf{H.C.}
 	~\\
-	\vspace{5in}  
+	\vspace{5in}
 	{\large Latest Update: \today}
 \end{center}
 \tableofcontents
@@ -65,139 +65,139 @@
 \begin{example}\label{example:Upper triangularization}
 	\begin{align*}
 		D_{n}=\left|\begin{array}{cccc}
-			x & a & \cdots & a \\
-			a & x & \cdots & a \\
+			x      & a      & \cdots & a      \\
+			a      & x      & \cdots & a      \\
 			\vdots & \vdots & \ddots & \vdots \\
-			a & a & \cdots & x
+			a      & a      & \cdots & x
 		\end{array}\right|=\left(x+(n-1)a\right)\left(x-a\right)^{n-1}.
 	\end{align*}
 \end{example}
 \begin{proof}
 	\textbf{Upper triangularization}. There are two possible ways to achieve this.
 	\begin{enumerate}
-		\item Multiple subtraction. Subtract row 1 from row 2, row 3, ... , row $n$ to get a shape like 
-		\begin{equation*}
-			\scalemath{0.55}{
-			\left|\begin{array}{ccccc}
-			* & * & * &\cdots & * \\
-			* & * &  &  &  \\
-			* &   & *&  &  \\
-			\vdots &  &   &\ddots &  \\
-			* &  &  &  & *
-			\end{array}\right|}
-		\end{equation*}
-	and then eliminate the first column.
-		\begin{equation*}		
-			\begin{aligned}
-				D_{n}=\left|\begin{array}{cccc}
-					x & a & \cdots & a \\
-					a & x & \cdots & a \\
-					\vdots & \vdots & \ddots & \vdots \\
-					a & a & \cdots & x
-				\end{array}\right|&\xlongequal{\scalemath{0.65}{\arraycolsep=10pt\def\arraystretch{0.85}
-				\begin{array}{l}
-					\mathtt{r_2\minuseq r_1}\\
-					\cdots\\ 
-					\mathtt{r_n\minuseq r_1}
-				\end{array}}}
-				\left|\begin{array}{cccc}
-					x & a & \cdots & a \\
-					a-x & x-a &  &  \\
-					\vdots &  & \ddots &  \\
-					a-x & &  & x-a
-				\end{array}\right|\\
-				&\xlongequal{\mathtt{c_1\pluseq c_2+\cdots+c_n}}\left|\begin{array}{cccc}
-					x+(n-1)a & a & \cdots & a \\
-					& x-a &  &  \\
-					 &  & \ddots &  \\
-					 & &  & x-a
-				\end{array}\right|.
-			\end{aligned}
-		\end{equation*}
+		\item Multiple subtraction. Subtract row 1 from row 2, row 3, ... , row $n$ to get a shape like
+		      \begin{equation*}
+			      \scalemath{0.55}{
+				      \left|\begin{array}{ccccc}
+					      *      & * & * & \cdots & * \\
+					      *      & * &   &        &   \\
+					      *      &   & * &        &   \\
+					      \vdots &   &   & \ddots &   \\
+					      *      &   &   &        & *
+				      \end{array}\right|}
+		      \end{equation*}
+		      and then eliminate the first column.
+		      \begin{equation*}
+			      \begin{aligned}
+				      D_{n}=\left|\begin{array}{cccc}
+					      x      & a      & \cdots & a      \\
+					      a      & x      & \cdots & a      \\
+					      \vdots & \vdots & \ddots & \vdots \\
+					      a      & a      & \cdots & x
+				      \end{array}\right| & \xlongequal{\scalemath{0.65}{\arraycolsep=10pt\def\arraystretch{0.85}
+						      \begin{array}{l}
+							      \mathtt{r_2\minuseq r_1} \\
+							      \cdots                   \\
+							      \mathtt{r_n\minuseq r_1}
+						      \end{array}}}
+				      \left|\begin{array}{cccc}
+					      x      & a   & \cdots & a   \\
+					      a-x    & x-a &        &     \\
+					      \vdots &     & \ddots &     \\
+					      a-x    &     &        & x-a
+				      \end{array}\right|                                                                                                \\
+				                                                   & \xlongequal{\mathtt{c_1\pluseq c_2+\cdots+c_n}}\left|\begin{array}{cccc}
+					      x+(n-1)a & a   & \cdots & a   \\
+					               & x-a &        &     \\
+					               &     & \ddots &     \\
+					               &     &        & x-a
+				      \end{array}\right|.
+			      \end{aligned}
+		      \end{equation*}
 		\item Accumulation. Add row 2, row 3, ... , row $n$ to row 1.
-		\begin{equation*}		
-			\begin{aligned}
-			D_{n}=\left|\begin{array}{cccc}
-				x & a & \cdots & a \\
-				a & x & \cdots & a \\
-				\vdots & \vdots & \ddots & \vdots \\
-				a & a & \cdots & x
-			\end{array}\right|&\xlongequal{\mathtt{r_1\pluseq r_2+\cdots+r_n}}
-			\left|\begin{array}{cccc}
-				x+(n-1)a & x+(n-1)a & \cdots & x+(n-1)a  \\
-				a & x & \cdots & a \\
-				\vdots & \vdots & \ddots & \vdots \\
-				a & a & \cdots & x
-			\end{array}\right|\\
-			&=\left(x+(n-1)a\right)\left|\begin{array}{cccc}
-				1 & 1 & \cdots & 1 \\
-				a & x & \cdots & a \\
-				\vdots & \vdots & \ddots & \vdots \\
-				a & a & \cdots & x
-			\end{array}\right|\\
-			&\xlongequal{\scalemath{0.65}{\arraycolsep=1.4pt\def\arraystretch{0.85}
-				\begin{array}{l}
-					\mathtt{r_2\minuseq \mathit{a}* r_1}\\
-					\cdots\\ 
-					\mathtt{r_n\minuseq \mathit{a}* r_1}
-				\end{array}}}
-				\left(x+(n-1)a\right)\left|
-				\begin{array}{cccc}
-				1 & 1 & \cdots & 1 \\
-				  & x-a &   &   \\
-				  &   & \ddots &   \\
-				  &   &   & x-a
-			\end{array}\right|.
-			\end{aligned}
-		\end{equation*}
+		      \begin{equation*}
+			      \begin{aligned}
+				      D_{n}=\left|\begin{array}{cccc}
+					      x      & a      & \cdots & a      \\
+					      a      & x      & \cdots & a      \\
+					      \vdots & \vdots & \ddots & \vdots \\
+					      a      & a      & \cdots & x
+				      \end{array}\right| & \xlongequal{\mathtt{r_1\pluseq r_2+\cdots+r_n}}
+				      \left|\begin{array}{cccc}
+					      x+(n-1)a & x+(n-1)a & \cdots & x+(n-1)a \\
+					      a        & x        & \cdots & a        \\
+					      \vdots   & \vdots   & \ddots & \vdots   \\
+					      a        & a        & \cdots & x
+				      \end{array}\right|                                                                                \\
+				                                                   & =\left(x+(n-1)a\right)\left|\begin{array}{cccc}
+					      1      & 1      & \cdots & 1      \\
+					      a      & x      & \cdots & a      \\
+					      \vdots & \vdots & \ddots & \vdots \\
+					      a      & a      & \cdots & x
+				      \end{array}\right|          \\
+				                                                   & \xlongequal{\scalemath{0.65}{\arraycolsep=1.4pt\def\arraystretch{0.85}
+						      \begin{array}{l}
+							      \mathtt{r_2\minuseq \mathit{a}* r_1} \\
+							      \cdots                               \\
+							      \mathtt{r_n\minuseq \mathit{a}* r_1}
+						      \end{array}}}
+				      \left(x+(n-1)a\right)\left|
+				      \begin{array}{cccc}
+					      1 & 1   & \cdots & 1   \\
+					        & x-a &        &     \\
+					        &     & \ddots &     \\
+					        &     &        & x-a
+				      \end{array}\right|.
+			      \end{aligned}
+		      \end{equation*}
 	\end{enumerate}
 \end{proof}
 \begin{example} Suppose $x_i\ne a_i\;(i=1,2,\cdots,n)$.
-	\begin{equation*}		
+	\begin{equation*}
 		\begin{aligned}
-		D_{n}=\left|\begin{array}{cccc}
-			x_{1} & a_{2} & \cdots & a_{n} \\
-			a_{1} & x_{2} & \cdots & a_{n} \\
-			\vdots & \vdots & \ddots & \vdots \\
-			a_{1} & a_{2} & \cdots & x_{n}
-		\end{array}\right|=\left(1+\sum_{i=1}^{n} \frac{a_{i}}{x_{i}-a_{i}}\right) \prod_{i=1}^{n}\left(x_{i}-a_{i}\right).
+			D_{n}=\left|\begin{array}{cccc}
+				x_{1}  & a_{2}  & \cdots & a_{n}  \\
+				a_{1}  & x_{2}  & \cdots & a_{n}  \\
+				\vdots & \vdots & \ddots & \vdots \\
+				a_{1}  & a_{2}  & \cdots & x_{n}
+			\end{array}\right|=\left(1+\sum_{i=1}^{n} \frac{a_{i}}{x_{i}-a_{i}}\right) \prod_{i=1}^{n}\left(x_{i}-a_{i}\right).
 		\end{aligned}
 	\end{equation*}
 \end{example}
 \begin{proof}
 	\textbf{Increase order}. Consider
-	\begin{equation*}		
+	\begin{equation*}
 		\begin{aligned}
-		D_{n}=\left|\begin{array}{cccc}
-			x_{1} & a_{2} & \cdots & a_{n} \\
-			a_{1} & x_{2} & \cdots & a_{n} \\
-			\vdots & \vdots & \ddots & \vdots \\
-			a_{1} & a_{2} & \cdots & x_{n}
-		\end{array}\right|=
-		\left|\begin{array}{c;{2pt/2pt}ccc}
-			1 & a_{1} & \cdots & a_{n} \\\hdashline[2pt/2pt]
-			 &   &   &   \\
-			0 &   & D_n &   \\
-			\phantom{a} &   &   &  
-		\end{array}\right|.
+			D_{n}=\left|\begin{array}{cccc}
+				x_{1}  & a_{2}  & \cdots & a_{n}  \\
+				a_{1}  & x_{2}  & \cdots & a_{n}  \\
+				\vdots & \vdots & \ddots & \vdots \\
+				a_{1}  & a_{2}  & \cdots & x_{n}
+			\end{array}\right|=
+			\left|\begin{array}{c;{2pt/2pt}ccc}
+				1           & a_{1} & \cdots & a_{n} \\\hdashline[2pt/2pt]
+				            &       &        &       \\
+				0           &       & D_n    &       \\
+				\phantom{a} &       &        &
+			\end{array}\right|.
 		\end{aligned}
 	\end{equation*}
-Then we can use the multiple subtraction method in Example~\ref{example:Upper triangularization} to get an upper triangular determinant.
-	\begin{equation*}		
+	Then we can use the multiple subtraction method in Example~\ref{example:Upper triangularization} to get an upper triangular determinant.
+	\begin{equation*}
 		\begin{aligned}
-			D_{n}=&\left|\begin{array}{ccccc}
-				1 & a_{1} & a_2 & \cdots & a_{n} \\
-				-1&x_1-a_{1}&  &  &  \\
-				-1& & x_2-a_2 &  &  \\
-				\vdots & &  & \ddots &  \\
-				-1&  &  &  & x_n-a_n
-			\end{array}\right|\\
-			=&\left|\begin{array}{ccccc}
-				1+\sum_{i=1}^{n} \frac{a_{i}}{x_{i}-a_{i}} & a_{1} & a_2 & \cdots & a_{n} \\
-				 &x_1-a_{1}&  &  &  \\
-				 & & x_2-a_2 &  &  \\
-				  & &  & \ddots &  \\
-				 &  &  &  & x_n-a_n
+			D_{n}= & \left|\begin{array}{ccccc}
+				1      & a_{1}     & a_2     & \cdots & a_{n}   \\
+				-1     & x_1-a_{1} &         &        &         \\
+				-1     &           & x_2-a_2 &        &         \\
+				\vdots &           &         & \ddots &         \\
+				-1     &           &         &        & x_n-a_n
+			\end{array}\right|  \\
+			=      & \left|\begin{array}{ccccc}
+				1+\sum_{i=1}^{n} \frac{a_{i}}{x_{i}-a_{i}} & a_{1}     & a_2     & \cdots & a_{n}   \\
+				                                           & x_1-a_{1} &         &        &         \\
+				                                           &           & x_2-a_2 &        &         \\
+				                                           &           &         & \ddots &         \\
+				                                           &           &         &        & x_n-a_n
 			\end{array}\right|.
 		\end{aligned}
 	\end{equation*}
@@ -205,11 +205,11 @@ Then we can use the multiple subtraction method in Example~\ref{example:Upper tr
 
 \begin{example}Suppose $a\ne b$.
 	\begin{align*}
-	D_{n}=\left|\begin{array}{cccc}
-			x & a & \cdots & a \\
-			b & x & \cdots & a \\
-			\vdots & \vdots & \ddots &\vdots  \\
-			b & b & \cdots & x
+		D_{n}=\left|\begin{array}{cccc}
+			x      & a      & \cdots & a      \\
+			b      & x      & \cdots & a      \\
+			\vdots & \vdots & \ddots & \vdots \\
+			b      & b      & \cdots & x
 		\end{array}\right|=\frac{a(x-b)^{n}-b(x-a)^{n}}{a-b}.
 	\end{align*}
 \end{example}
@@ -217,98 +217,181 @@ Then we can use the multiple subtraction method in Example~\ref{example:Upper tr
 	\textbf{Recurrence}. By splitting the first column we get
 	\begin{equation*}
 		\begin{aligned}
-			D_{n}&=\frac{a}{b}\left|\begin{array}{cccc}
-				b & b & \cdots & b \\
-				b & x & \cdots & a \\
+			D_{n} & =\frac{a}{b}\left|\begin{array}{cccc}
+				b      & b      & \cdots & b      \\
+				b      & x      & \cdots & a      \\
 				\vdots & \vdots & \ddots & \vdots \\
-				b & b & \cdots&x
+				b      & b      & \cdots & x
 			\end{array}\right|+\left|\begin{array}{cccc}
-			x-a & a & \cdots & a \\
-			0 & x & \cdots & a \\
-			0 & \vdots & \ddots &\vdots  \\
-			0 & b & \cdots & x
-		\end{array}\right| \\
-		&=\frac{a}{b}\left|\begin{array}{cccc}
-			b & b & \cdots & b \\
-			  & x-b & \cdots & a-b \\
-			  &   & \ddots & \vdots \\
-			  &   &  &x-b
-		\end{array}\right|+
-		\left|\begin{array}{c;{2pt/2pt}ccc}
-			x-a & a & \cdots & a \\\hdashline[2pt/2pt]
-			&   &   &   \\
-			0 &   & D_{n-1} &   \\
-			\phantom{a} &   &   &  
-		\end{array}\right| \\
-			&=a(x-b)^{n-1}+(x-a) D_{n-1} .
+				x-a & a      & \cdots & a      \\
+				0   & x      & \cdots & a      \\
+				0   & \vdots & \ddots & \vdots \\
+				0   & b      & \cdots & x
+			\end{array}\right| \\
+			      & =\frac{a}{b}\left|\begin{array}{cccc}
+				b & b   & \cdots & b      \\
+				  & x-b & \cdots & a-b    \\
+				  &     & \ddots & \vdots \\
+				  &     &        & x-b
+			\end{array}\right|+
+			\left|\begin{array}{c;{2pt/2pt}ccc}
+				x-a         & a & \cdots  & a \\\hdashline[2pt/2pt]
+				            &   &         &   \\
+				0           &   & D_{n-1} &   \\
+				\phantom{a} &   &         &
+			\end{array}\right|                                                             \\
+			      & =a(x-b)^{n-1}+(x-a) D_{n-1} .
 		\end{aligned}
 	\end{equation*}
-Transpose it to obtain another recurrence relation
-\begin{equation*}
-	\begin{aligned}
-		D_{n}=D_{n}^{T}=b(x-a)^{n-1}+(x-b) D_{n-1}.
-	\end{aligned}
-\end{equation*}
-Solve $D_n$ from the two recurrence equations.
+	Transpose it to obtain another recurrence relation
+	\begin{equation*}
+		\begin{aligned}
+			D_{n}=D_{n}^{T}=b(x-a)^{n-1}+(x-b) D_{n-1}.
+		\end{aligned}
+	\end{equation*}
+	Solve $D_n$ from the two recurrence equations.
 \end{proof}
 \newpage
 \chapter{Matrix}
 \section{Properties}
 \begin{proposition}[properties of square matrices] Let $A, B$ be $n\times n$ matrices.
 	\begin{enumerate}
-		\item If $A,B$ is invertible, 
-		\[
-		(AB)^{-1}=B^{-1}A^{-1},\quad(kA)^{-1}=\frac{1}{k}A^{-1}(k\ne 0),\quad \left|A^{n}\right|=\left|A\right|^n(n\in\mathbb{Z}).
-		\]
-		\item 
-		\[
-		(AB)^{\mathrm{T}}=B^{\mathrm{T}}A^{\mathrm{T}},\quad(kA)^{\mathrm{T}}=kA^{\mathrm{T}},\quad\left|A^{\mathrm{T}}\right|=\left|A\right|, (A+B)^{\mathrm{T}}=A^{\mathrm{T}}+B^{\mathrm{T}}.
-		\]
-		\item 
-		\[
-		\mathrm{adj}(AB)=\mathrm{adj}(B)\mathrm{adj}(A),\quad\mathrm{adj}(kA)=k^{n-1}\mathrm{adj}(A),\quad\left|\mathrm{adj}(A)\right|=\left|A\right|^{n-1},\quad\mathrm{adj}(\mathrm{adj}(A))=\left|A\right|^{n-2}A.
-		\]
+		\item If $A,B$ is invertible,
+		      \[
+			      (AB)^{-1}=B^{-1}A^{-1},\quad(kA)^{-1}=\frac{1}{k}A^{-1}(k\ne 0),\quad \left|A^{n}\right|=\left|A\right|^n(n\in\mathbb{Z}).
+		      \]
+		\item
+		      \[
+			      (AB)^{\mathrm{T}}=B^{\mathrm{T}}A^{\mathrm{T}},\quad(kA)^{\mathrm{T}}=kA^{\mathrm{T}},\quad\left|A^{\mathrm{T}}\right|=\left|A\right|, (A+B)^{\mathrm{T}}=A^{\mathrm{T}}+B^{\mathrm{T}}.
+		      \]
+		\item
+		      \[
+			      \mathrm{adj}(AB)=\mathrm{adj}(B)\mathrm{adj}(A),\quad\mathrm{adj}(kA)=k^{n-1}\mathrm{adj}(A),\quad\left|\mathrm{adj}(A)\right|=\left|A\right|^{n-1},\quad\mathrm{adj}(\mathrm{adj}(A))=\left|A\right|^{n-2}A.
+		      \]
 		\item The mappings ${}^{-1}$, ${}^{\mathrm{T}}$, $\mathrm{adj}$ are commutable.
 	\end{enumerate}
 \end{proposition}
 \begin{proposition}[properties of block matrices]
-	Suppose $A=(A_{ij})$. 
+	Suppose $A=(A_{ij})$.
 	\begin{enumerate}
-		\item 
-		\[
-		A^{\mathrm{T}}=(A_{ji}^{\mathrm{T}}).
-		\]
+		\item
+		      \[
+			      A^{\mathrm{T}}=(A_{ji}^{\mathrm{T}}).
+		      \]
 		\item If $A,B$ is invertible,
-		\[
-		\begin{pmatrix}
-			0 & A\\
-			B & 0
-		\end{pmatrix}^{-1}
-	=
-		\begin{pmatrix}
-			0 & B^{-1}\\
-			A^{-1} & 0
-		\end{pmatrix}
-		\]
-\end{enumerate}
+		      \[
+			      \begin{pmatrix}
+				      0 & A \\
+				      B & 0
+			      \end{pmatrix}^{-1}
+			      =
+			      \begin{pmatrix}
+				      0      & B^{-1} \\
+				      A^{-1} & 0
+			      \end{pmatrix}
+		      \]
+	\end{enumerate}
 \end{proposition}
 \begin{proposition}[properties of block diagonal matrices]
 	Suppose $A=\mathrm{diag}(A_1,A_2,\cdots,A_n)$, $A_i(i=1,2,\cdots,n)$ are square matrices.
 	\begin{enumerate}
-		\item 
-		\[
-		\mathrm{diag}(A_1,A_2,\cdots,A_n)^k=\mathrm{diag}(A_1^k,A_2^k,\cdots,A_n^k)\quad(k\in\mathbb{Z}_{\ge0}).
-		\]
-		Furthermore, if $A_i(i=1,2,\cdots,n)$ are invertible,
-		\[
-		\mathrm{diag}(A_1,A_2,\cdots,A_n)^k=\mathrm{diag}(A_1^k,A_2^k,\cdots,A_n^k)\quad(k\in\mathbb{Z}).
-		\]
-		\item 
-		\[
-		\left|\mathrm{diag}(A_1,A_2,\cdots,A_n)\right|=\left|A_1\right|\left|A_n\right|\cdots\left|A_n\right|.
-		\]
+		\item
+		      \[
+			      \mathrm{diag}(A_1,A_2,\cdots,A_n)^k=\mathrm{diag}(A_1^k,A_2^k,\cdots,A_n^k)\quad(k\in\mathbb{Z}_{\ge0}).
+		      \]
+		      Furthermore, if $A_i(i=1,2,\cdots,n)$ are invertible,
+		      \[
+			      \mathrm{diag}(A_1,A_2,\cdots,A_n)^k=\mathrm{diag}(A_1^k,A_2^k,\cdots,A_n^k)\quad(k\in\mathbb{Z}).
+		      \]
+		\item
+		      \[
+			      \left|\mathrm{diag}(A_1,A_2,\cdots,A_n)\right|=\left|A_1\right|\left|A_n\right|\cdots\left|A_n\right|.
+		      \]
 	\end{enumerate}
 \end{proposition}
+
+
+
+\section{Linear Equations}
+\subsection{Homogeneous Linear Equations}
+Let $A_{m\times n}=(\alpha_1,\alpha_2,\cdots,\alpha_n)\in M_{m,n}(F)$. There are two possible solution sets for the equation $Ax=0$.
+\begin{enumerate}
+	\item $Ax=0$ has unique solution $x=0$.
+	\item $Ax=0$ has infinitely many solutions.
+\end{enumerate}
+\textbf{Row Echelon Form}\\~
+Suppose $A$ is equivalent to the following row echelon form
+\[
+	\left(\begin{array}{ccccccccccc}
+			1                              & *                                     & \cdots & *      & * & \cdots & *      & *      & *      & \cdots & *      \\\cdashline{1-3}[3pt/3pt]
+			\multicolumn{3}{c;{3pt/3pt}}{} & 1                                     & *      & \cdots & * & *      & *      & \cdots & *                        \\\cdashline{4-6}[3pt/3pt]
+			                               &                                       &        &        &   &        & \ddots & \vdots & \vdots & \ddots & \vdots \\
+			\multicolumn{7}{c;{3pt/3pt}}{} & 1                                     & *      & \cdots & *                                                       \\\hdashline[3pt/3pt]
+			                               & \multicolumn{9}{c}{0_{(m-r)\times n}} &
+		\end{array}\right).
+\]
+We see $r(A)$ equals the number of the nonzero columns $r$.
+\begin{enumerate}
+	\item $Ax=0$ has unique solution $x=0\iff r(A)=n$.
+	\item $Ax=0$ has infinitely many solutions $\iff r(A)<n$.
+\end{enumerate}
+
+\noindent\textbf{Spanned Space of Column Vectors}\\~
+If we see $A$ as $(\alpha_1,\alpha_2,\cdots,\alpha_n)$, where $\alpha_j\in F^m\;(j=1,2\cdots,n)$, then
+\[
+	Ax=0\iff x_1\alpha_1+x_2\alpha_2+\cdots+x_n\alpha_n=0.
+\]
+\begin{enumerate}
+	\item $Ax=0$ has unique solution $x=0\iff \alpha_1,\alpha_2,\cdots,\alpha_n$ are linearly independent $\iff\dim\mathrm{span}(\alpha_1,\alpha_2,\cdots,\alpha_n)=n$.
+	\item $Ax=0$ has infinitely many solutions $x=0\iff \alpha_1,\alpha_2,\cdots,\alpha_n$ are linearly dependent $\iff\dim\mathrm{span}(\alpha_1,\alpha_2,\cdots,\alpha_n)<n$.
+\end{enumerate}
+\textbf{Linear Mapping}\\~
+If we see $A$ as a linear mapping in $\mathrm{Hom}_{\mathsf{Vect}_F}(F^n,F^m)$, that is
+\begin{align*}
+	A:F^n&\longrightarrow F^m\\
+	x&\longmapsto Ax,
+\end{align*}
+then the solution space of $Ax=0$ is $\ker A$. Since $\mathrm{im} A=\mathrm{span}(\alpha_1,\alpha_2,\cdots,\alpha_n)$, we have
+\[
+	r(A)=\dim\mathrm{span}(\alpha_1,\alpha_2,\cdots,\alpha_n)=\dim\mathrm{im}A.
+\]
+\begin{enumerate}
+	\item $Ax=0$ has unique solution $x=0\iff A\text{ is injective}\iff\ker A=0\iff \mathrm{im}A=F^m$.
+	\item $Ax=0$ has infinitely many solutions $x=0\iff A\text{ is not injective}\iff\dim\ker A>0\iff \dim\mathrm{im}A<n$.
+\end{enumerate}
+
+\noindent\textbf{Orthogonal Complement}\\~
+If we see $A$ as $(\beta_1,\beta_2,\cdots,\beta_n)$, where $\beta_i\in F^n\;(i=1,2\cdots,m)$, then 
+\[
+	Ax=0\iff \left\langle\beta_i^T,x\right\rangle=\beta_ix=0,\;i=1,2\cdots,m.
+\]
+The solution space of $Ax=0$ is
+\[
+	\bigcap_{i=1}^m\mathrm{span}\left(\beta_i^T\right)^{\perp}.\]
+
+\subsection{Nonhomogeneous Linear Equations}
+Let $A_{m\times n}=(\alpha_1,\alpha_2,\cdots,\alpha_n)$. There are two possible results for the equation $Ax=b$.
+\begin{enumerate}
+	\item has unique solution $x=0$.
+	\item has infinitely many solution.
+\end{enumerate}
+\textbf{Matrix theory}.
+Suppose $\left(A|b\right)$ is equivalent to the following row echelon form
+\[
+	\left(\begin{array}{ccccccccccc|c}
+			1                              & *                                     & \cdots & *                 & * & \cdots & *      & *      & *      & \cdots & *      & 0      \\\cdashline{1-3}[3pt/3pt]
+			\multicolumn{3}{c;{3pt/3pt}}{} & 1                                     & *      & \cdots            & * & *      & *      & \cdots & *      & 0                        \\\cdashline{4-6}[3pt/3pt]
+			                               &                                       &        &                   &   &        & \ddots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+			\multicolumn{7}{c;{3pt/3pt}}{} & 1                                     & *      & \cdots            & * & 0                                                            \\\hdashline[3pt/3pt]
+			                               & \multicolumn{9}{c}{0_{(m-r)\times n}} &        & 0_{(m-r)\times 1}
+		\end{array}\right)
+\]
+
+\begin{enumerate}
+	\item has unique solution $x=0$:
+	\item has infinitely many solution.
+\end{enumerate}
+
 \chapter*{Appendix}
 
 
