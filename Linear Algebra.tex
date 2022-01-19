@@ -319,7 +319,14 @@ Let $A_{m\times n}=(\alpha_1,\alpha_2,\cdots,\alpha_n)\in M_{m,n}(F)$. There are
 	\item $Ax=0$ has unique solution $x=0$.
 	\item $Ax=0$ has infinitely many solutions.
 \end{enumerate}
-\textbf{Row Echelon Form}\\~
+
+\noindent\textbf{Rank}
+\begin{enumerate}
+	\item $Ax=0$ has unique solution $x=0\iff r(A)=n$.
+	\item $Ax=0$ has infinitely many solutions $\iff r(A)<n$.
+\end{enumerate}
+
+\noindent\textbf{Row Echelon Form}\\~
 Suppose $A$ is equivalent to the following row echelon form
 \[
 	\left(\begin{array}{ccccccccccc}
@@ -330,10 +337,10 @@ Suppose $A$ is equivalent to the following row echelon form
 			                               & \multicolumn{9}{c}{0_{(m-r)\times n}} &
 		\end{array}\right).
 \]
-We see $r(A)$ equals the number of the nonzero columns $r$.
+$r$ denotes the number of the nonzero rows.
 \begin{enumerate}
-	\item $Ax=0$ has unique solution $x=0\iff r(A)=n$.
-	\item $Ax=0$ has infinitely many solutions $\iff r(A)<n$.
+	\item $Ax=0$ has unique solution $x=0\iff r=n$.
+	\item $Ax=0$ has infinitely many solutions $\iff r<n$.
 \end{enumerate}
 
 \noindent\textbf{Spanned Space of Column Vectors}\\~
@@ -342,54 +349,106 @@ If we see $A$ as $(\alpha_1,\alpha_2,\cdots,\alpha_n)$, where $\alpha_j\in F^m\;
 	Ax=0\iff x_1\alpha_1+x_2\alpha_2+\cdots+x_n\alpha_n=0.
 \]
 \begin{enumerate}
-	\item $Ax=0$ has unique solution $x=0\iff \alpha_1,\alpha_2,\cdots,\alpha_n$ are linearly independent $\iff\dim\mathrm{span}(\alpha_1,\alpha_2,\cdots,\alpha_n)=n$.
-	\item $Ax=0$ has infinitely many solutions $x=0\iff \alpha_1,\alpha_2,\cdots,\alpha_n$ are linearly dependent $\iff\dim\mathrm{span}(\alpha_1,\alpha_2,\cdots,\alpha_n)<n$.
+	\item $Ax=0$ has unique solution $x=0\iff \alpha_1,\alpha_2,\cdots,\alpha_n$ are linearly independent $\iff\dim\operatorname{span}(\alpha_1,\alpha_2,\cdots,\alpha_n)=n$.
+	\item $Ax=0$ has infinitely many solutions $x=0\iff \alpha_1,\alpha_2,\cdots,\alpha_n$ are linearly dependent $\iff\dim\operatorname{span}(\alpha_1,\alpha_2,\cdots,\alpha_n)<n$.
 \end{enumerate}
-\textbf{Linear Mapping}\\~
-If we see $A$ as a linear mapping in $\mathrm{Hom}_{\mathsf{Vect}_F}(F^n,F^m)$, that is
+
+\noindent\textbf{Linear Mapping}\\~
+If we see $A$ as a linear mapping $\mathcal{A}\in\operatorname{Hom}_{\mathsf{Vect}_F}(F^n,F^m)$, that is
 \begin{align*}
-	A:F^n&\longrightarrow F^m\\
+	\mathcal{A}:F^n&\longrightarrow F^m\\
 	x&\longmapsto Ax,
 \end{align*}
-then the solution space of $Ax=0$ is $\ker A$. Since $\mathrm{im} A=\mathrm{span}(\alpha_1,\alpha_2,\cdots,\alpha_n)$, we have
+then the solution space of $Ax=0$ is $\ker\mathcal{A}$. Since $\operatorname{im}\mathcal{A}=\operatorname{span}(\alpha_1,\alpha_2,\cdots,\alpha_n)$, we have
 \[
-	r(A)=\dim\mathrm{span}(\alpha_1,\alpha_2,\cdots,\alpha_n)=\dim\mathrm{im}A.
+	r(A)=\dim\operatorname{span}(\alpha_1,\alpha_2,\cdots,\alpha_n)=\dim\operatorname{im}\mathcal{A}.
 \]
 \begin{enumerate}
-	\item $Ax=0$ has unique solution $x=0\iff A\text{ is injective}\iff\ker A=0\iff \mathrm{im}A=F^m$.
-	\item $Ax=0$ has infinitely many solutions $x=0\iff A\text{ is not injective}\iff\dim\ker A>0\iff \dim\mathrm{im}A<n$.
+	\item $Ax=0$ has unique solution $x=0\iff\mathcal{A}\text{ is injective}\iff\ker\mathcal{A}=0\iff \operatorname{im}\mathcal{A}=F^m$.
+	\item $Ax=0$ has infinitely many solutions $x=0\iff\mathcal{A}\text{ is not injective}\iff\dim\ker\mathcal{A}>0\iff \dim\operatorname{im}\mathcal{A}<n$.
 \end{enumerate}
 
 \noindent\textbf{Orthogonal Complement}\\~
-If we see $A$ as $(\beta_1,\beta_2,\cdots,\beta_n)$, where $\beta_i\in F^n\;(i=1,2\cdots,m)$, then 
+If we see $A$ as $(\beta_1,\beta_2,\cdots,\beta_n)^T$, where $\beta_i\in F^n\;(i=1,2\cdots,m)$, then 
 \[
-	Ax=0\iff \left\langle\beta_i^T,x\right\rangle=\beta_ix=0,\;i=1,2\cdots,m.
+	Ax=0\iff \left\langle\beta_i,x\right\rangle=\beta_i^Tx=0,\;\left(i=1,2\cdots,m\right).
 \]
 The solution space of $Ax=0$ is
 \[
-	\bigcap_{i=1}^m\mathrm{span}\left(\beta_i^T\right)^{\perp}.\]
+	\bigcap_{i=1}^m\operatorname{span}\left(\beta_i^T\right)^{\perp}.\]
+
+\noindent\textbf{Determinant}\\~
+If $A$ is a square matrix, then
+\begin{enumerate}
+	\item $Ax=0$ has unique solution $x=0\iff \left|A\right|\ne 0$.
+	\item $Ax=0$ has infinitely many solutions $\iff \left|A\right|=0$.
+\end{enumerate}
 
 \subsection{Nonhomogeneous Linear Equations}
-Let $A_{m\times n}=(\alpha_1,\alpha_2,\cdots,\alpha_n)$. There are two possible results for the equation $Ax=b$.
+Let $A_{m\times n}=(\alpha_1,\alpha_2,\cdots,\alpha_n)$. There are two possible results for the equation $Ax=b$:
 \begin{enumerate}
-	\item has unique solution $x=0$.
-	\item has infinitely many solution.
+	\item $Ax=b$ has no solution.
+	\item $Ax=b$ has at least one solution.
+	\begin{enumerate}
+		\item $Ax=b$ has a unique solution.
+		\item $Ax=b$ has infinitely many solutions.
+	\end{enumerate}
 \end{enumerate}
-\textbf{Matrix theory}.
-Suppose $\left(A|b\right)$ is equivalent to the following row echelon form
+
+\noindent\textbf{Rank}
+\begin{enumerate}
+	\item $Ax=b$ has no solution $\iff r\left(A\mid b\right)=r(A)+1$.
+	\item $Ax=b$ has at least one solution $\iff r\left(A\mid b\right)=r(A)$.
+	\begin{enumerate}
+		\item $Ax=b$ has a unique solution $\iff r(A)=n$.
+		\item $Ax=b$ has infinitely many solutions $\iff r(A)<n$..
+	\end{enumerate}
+\end{enumerate}
+
+\noindent\textbf{Row Echelon Form}\\~
+Suppose $\left(A\mid b\right)$ is equivalent to the following row echelon form
 \[
 	\left(\begin{array}{ccccccccccc|c}
-			1                              & *                                     & \cdots & *                 & * & \cdots & *      & *      & *      & \cdots & *      & 0      \\\cdashline{1-3}[3pt/3pt]
-			\multicolumn{3}{c;{3pt/3pt}}{} & 1                                     & *      & \cdots            & * & *      & *      & \cdots & *      & 0                        \\\cdashline{4-6}[3pt/3pt]
+			1                              & *                                     & \cdots & *                 & * & \cdots & *      & *      & *      & \cdots & *      & d_1     \\\cdashline{1-3}[3pt/3pt]
+			\multicolumn{3}{c;{3pt/3pt}}{} & 1                                     & *      & \cdots            & * & *      & *      & \cdots & *      & d_2                        \\\cdashline{4-6}[3pt/3pt]
 			                               &                                       &        &                   &   &        & \ddots & \vdots & \vdots & \ddots & \vdots & \vdots \\
-			\multicolumn{7}{c;{3pt/3pt}}{} & 1                                     & *      & \cdots            & * & 0                                                            \\\hdashline[3pt/3pt]
-			                               & \multicolumn{9}{c}{0_{(m-r)\times n}} &        & 0_{(m-r)\times 1}
+			\multicolumn{7}{c;{3pt/3pt}}{} & 1                                     & *      & \cdots            & * & d_r                                                           \\\hdashline[3pt/3pt]
+			& \multicolumn{9}{c}{0_{1\times n}} &        & d_{r+1}\\
+			                               & \multicolumn{9}{c}{0_{(m-r-1)\times n}} &        & 0_{(m-r-1)\times 1}
 		\end{array}\right)
 \]
+$r$ denotes the number of the nonzero rows.
+\begin{enumerate}
+	\item $Ax=b$ has no solution $\iff d_{r+1}\ne 0$.
+	\item $Ax=b$ has at least one solution $\iff d_{r+1}=0$..
+	\begin{enumerate}
+		\item $Ax=b$ has a unique solution $\iff r=n$.
+		\item $Ax=b$ has infinitely many solutions $\iff r<n$..
+	\end{enumerate}
+\end{enumerate}
+
+\noindent\textbf{Linear Mapping}\\~
+If we see $A$ as a linear mapping $\mathcal{A}\in\operatorname{Hom}_{\mathsf{Vect}_F}(F^n,F^m)$, that is
+\begin{align*}
+	\mathcal{A}:F^n&\longrightarrow F^m\\
+	x&\longmapsto Ax,
+\end{align*}
+then the solution space of $Ax=b$ is $\mathcal{A}^{-1}(b)+\ker\mathcal{A}$.
+\begin{enumerate}
+	\item $Ax=b$ has no solution $\iff b\notin \operatorname{im}\mathcal{A}$.
+	\item $Ax=b$ has at least one solution $\iff b\in \operatorname{im}\mathcal{A}$.
+	\begin{enumerate}
+		\item $Ax=b$ has a unique solution $\iff\mathcal{A}\text{ is injective}\iff\ker\mathcal{A}=0\iff \operatorname{im}\mathcal{A}=F^m$.
+		\item $Ax=b$ has infinitely many solutions $x=0\iff\mathcal{A}\text{ is not injective}\iff\dim\ker\mathcal{A}>0\iff \dim\operatorname{im}\mathcal{A}<n$.
+	\end{enumerate}
+\end{enumerate}
+
+\noindent\textbf{Determinant}\\~
+If $A$ is a square matrix, then
 
 \begin{enumerate}
-	\item has unique solution $x=0$:
-	\item has infinitely many solution.
+	\item $Ax=b$ has unique solution $\iff \left|A\right|\ne 0$.
+	\item $Ax=b$ has no  solution or have infinitely many solutions $\iff \left|A\right|=0$.
 \end{enumerate}
 
 \chapter*{Appendix}
