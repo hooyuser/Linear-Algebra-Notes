@@ -359,7 +359,11 @@ If we see $A$ as a linear mapping $\mathcal{A}\in\operatorname{Hom}_{\mathsf{Vec
 	\mathcal{A}:F^n&\longrightarrow F^m\\
 	x&\longmapsto Ax,
 \end{align*}
-then the solution space of $Ax=0$ is $\ker\mathcal{A}$. Since $\operatorname{im}\mathcal{A}=\operatorname{span}(\alpha_1,\alpha_2,\cdots,\alpha_n)$, we have
+then the solution space of $Ax=0$ is $\ker\mathcal{A}$. Note
+\[
+y\in \operatorname{im}\mathcal{A}\iff \exists x\in F^n,y=Ax\iff \exists x\in F^n,y=x_1\alpha_1+x_2\alpha_2+\cdots+x_n\alpha_n\iff y\in\operatorname{span}(\alpha_1,\alpha_2,\cdots,\alpha_n).
+\]
+We have $\operatorname{im}\mathcal{A}=\operatorname{span}(\alpha_1,\alpha_2,\cdots,\alpha_n)$, which implies
 \[
 	r(A)=\dim\operatorname{span}(\alpha_1,\alpha_2,\cdots,\alpha_n)=\dim\operatorname{im}\mathcal{A}.
 \]
