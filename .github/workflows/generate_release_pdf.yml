@@ -10,3 +10,7 @@ jobs:
         uses: xu-cheng/latex-action@v2
         with:
           root_file: Linear Algebra.tex
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: Linear Algebra.pdf
