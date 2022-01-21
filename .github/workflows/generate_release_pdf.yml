@@ -9,7 +9,7 @@ jobs:
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v2
         with:
-          root_file: Linear Algebra.tex
+          root_file: Linear_Algebra.tex
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
